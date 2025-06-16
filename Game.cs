@@ -13,31 +13,36 @@ namespace InvestigationGame
 
         public void StartGame()
         {
-            Console.WriteLine("Welcome to the investigation game!\nA game to detect Iranian agents using sensors.\nPlease enter the type of agent you would like to activate sensors on.");
-            string agentType = Console.ReadLine();
-            agent = new IranianAgent(agentType);
-            while (true)
+            bool stop = true;
+            while (stop)
             {
-                Console.WriteLine("Select which sensor you would like to activate on:\n(to exit enter '0')");
-                string sensorType = Console.ReadLine();
-                if (sensorType == "0")
+                Console.WriteLine("Welcome to the investigation game!\nA game to detect Iranian agents using sensors.\nPlease enter the type of agent you would like to activate sensors on.");
+                string agentType = Console.ReadLine();
+                agent = new IranianAgent(agentType);
+                while (true)
                 {
-                    return;
-                }
-                //string[] arrSensorType = sensorType.Split(',');
-                sensor = new Sensor(GetRandomSensors());
-                Console.WriteLine($"Sensor: {sensor.ToString()}");
-                Console.WriteLine($"IranianAgent: {agent.ToString()}");
-                SensorVulnerabilityTesting(sensor);
-                Console.WriteLine($"Sensors attached: {agent.GetNumberSensorsAttached()}/{agent.GetNumberSensorsContains()}");
+                    Console.WriteLine("Select which sensor you would like to activate on:\n(to exit enter '0')");
+                    string sensorType = Console.ReadLine();
+                    if (sensorType == "0")
+                    {
+                        stop = false;
+                        return;
+                    }
+                    //string[] arrSensorType = sensorType.Split(',');
+                    sensor = new Sensor(GetRandomSensors());
+                    Console.WriteLine($"Sensor: {sensor}");
+                    Console.WriteLine($"AgentType: {agent.AgentType}");
+                    Console.WriteLine($"IranianAgent: {agent}");
+                    SensorVulnerabilityTesting(sensor);
+                    Console.WriteLine($"Sensors attached: {agent.GetNumberSensorsAttached()}/{agent.GetNumberSensorsContains()}\n");
 
-                int finish = agent.GetNumberSensorsContains() - agent.GetNumberSensorsAttached();
-                Console.WriteLine(finish);
-                if (finish <= 0)
-                {
-                    return;
+                    int finish = agent.GetNumberSensorsContains() - agent.GetNumberSensorsAttached();
+                    if (finish <= 0)
+                    {
+                        Console.WriteLine("********************************\n");
+                        break;
+                    }
                 }
-                Console.ReadKey();
             }
         }
 
