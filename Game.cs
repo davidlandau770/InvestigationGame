@@ -13,7 +13,6 @@ namespace InvestigationGame
 
         public void StartGame()
         {
-            bool stop = true;
             Console.WriteLine("Welcome to the investigation game!\nA game to detect Iranian agents using sensors.\nPlease enter the type of agent you would like to activate sensors on.");
             string agentType = Console.ReadLine();
             agent = new IranianAgent(agentType);
@@ -25,38 +24,53 @@ namespace InvestigationGame
                 {
                     return;
                 }
-                string[] arrSensorType = sensorType.Split(',');
-                sensor = new Sensor(arrSensorType);
-                //agent.AddToList(agent);
+                //string[] arrSensorType = sensorType.Split(',');
+                sensor = new Sensor(GetRandomSensors());
                 Console.WriteLine($"Sensor: {sensor.ToString()}");
                 Console.WriteLine($"IranianAgent: {agent.ToString()}");
                 SensorVulnerabilityTesting(sensor);
-                Console.WriteLine($"{agent.GetNumberSersrorsAttached()}/{agent.GetNumberSersrorsContains()}");
+                Console.WriteLine($"Sensors attached: {agent.GetNumberSensorsAttached()}/{agent.GetNumberSensorsContains()}");
+
+                int finish = agent.GetNumberSensorsContains() - agent.GetNumberSensorsAttached();
+                Console.WriteLine(finish);
+                if (finish <= 0)
+                {
+                    return;
+                }
+                Console.ReadKey();
             }
         }
 
         public void SensorVulnerabilityTesting(Sensor sensor)
         {
-            int contains = agent.GetNumberSersrorsContains();
-            int attached = agent.GetNumberSersrorsAttached();
+            int contains = agent.GetNumberSensorsContains();
+            int attached = agent.GetNumberSensorsAttached();
             if (contains > attached)
             {
                 for (int i = 0; i < sensor.SensorsType.Length; i++)
                 {
                     //sensor.SensorsType[i].Trim();
-                    bool isEqual = agent.IsEqual(sensor.SensorsType[i].Trim());
+                    bool isEqual = agent.RemoveIfEqual(sensor.SensorsType[i].Trim());
                     if (isEqual)
                     {
                         agent.AttachingSensor();
                     }
                 }
             }
-            int newContains = agent.GetNumberSersrorsContains();
-            int newAttached = agent.GetNumberSersrorsAttached();
+            int newContains = agent.GetNumberSensorsContains();
+            int newAttached = agent.GetNumberSensorsAttached();
             if (newContains <= newAttached)
             {
                 Console.WriteLine("The agent was exposed.");
             }
+        }
+
+        public string[] GetRandomSensors()
+        {
+            string[] sensors = { "basic", "termi" };
+            Random random = new Random();
+            string[] returnSensor = { sensors[random.Next(0, sensors.Length)], sensors[random.Next(0, sensors.Length)] };
+            return returnSensor;
         }
     }
 }

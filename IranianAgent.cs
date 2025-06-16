@@ -52,12 +52,12 @@ namespace InvestigationGame
         //    iranianAgents.Add(agent);
         //} 
 
-        public int GetNumberSersrorsContains()
+        public int GetNumberSensorsContains()
         {
             return NumberSensorsContains;
         }
 
-        public int GetNumberSersrorsAttached()
+        public int GetNumberSensorsAttached()
         {
             return NumberSensorsAttached;
         }
@@ -67,21 +67,17 @@ namespace InvestigationGame
             NumberSensorsAttached++;
         }
 
-        public bool IsEqual(string sensor)
+        public bool RemoveIfEqual(string sensor)
         {
             int index = 0;
             if (sensor.Equals(SensorsType[index])) {
                 Console.WriteLine("The linkage was successful.");
+                SensorsType.RemoveAt(0);
                 index++;
                 return true;
             }
             return false;
         }
-
-        //public string GetSensorsTypeByIndex(int index)
-        //{
-        //    return SensorsType[index];
-        //}
 
         public override string ToString()
         {
