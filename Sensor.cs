@@ -8,7 +8,7 @@ namespace InvestigationGame
 {
     internal class Sensor : ISensors
     {
-        IranianAgent agent;
+        //IranianAgent agent;
         public string[] SensorsType { get; set; }
         
         public Sensor(string[] sensorsType)
@@ -29,7 +29,7 @@ namespace InvestigationGame
 
         public override string ToString()
         {
-            return $"{string.Join(",", SensorsType)}";
+            return $"{string.Join(", ", SensorsType)}";
         }
     }
 }

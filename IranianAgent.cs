@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,19 +13,45 @@ namespace InvestigationGame
         public int NumberSensorsContains { get; set; }
         public int NumberSensorsAttached {  get; set; }
         public List<string> SensorsType { get; set; }
+        public List<string> RemainedIdentifiable { get; set; }
 
         public IranianAgent(string agentType)
         {
-            AgentType = agentType;
+            AgentType = agentType == "Squad Leader" ? "Squad Leader" : agentType == "Senior Commander" ? "Senior Commander" : agentType == "Organization Leader" ? "Organization Leader" : "Foot Soldier";
             NumberSensorsContains = CheckNumberSensorsContains();
             SensorsType = GetRandomSensorType();
+            RemainedIdentifiable = new List<string>(SensorsType);
         }
 
-        static List<IranianAgent> iranianAgents = new List<IranianAgent>();
-
+        Random random = new Random();
+        
         public void Activate()
         {
+            int count = 0;
+            count++;
+            if (AgentType == "Squad Leader")
+            {
+                if (count == 3)
+                {
+                    string[] arrSensorType = { "basic", "termi" };
+                    RemainedIdentifiable.Insert(0, arrSensorType[random.Next(0, 2)]);
 
+                }
+            } else if (AgentType == "Senior Commander")
+            {
+                
+            } else if (AgentType == "Organization Leader")
+            {
+                if (count == 3)
+                {
+                    string[] arrSensorType = { "basic", "termi" };
+                    RemainedIdentifiable.Insert(0, arrSensorType[random.Next(0, 2)]);
+                }
+            }
+            else
+            {
+
+            }
         }
 
         public int CheckNumberSensorsContains()
@@ -38,7 +65,6 @@ namespace InvestigationGame
         public List<string> GetRandomSensorType()
         {
             string[] arrSensorType = { "basic", "termi" };
-            Random random = new Random();
             List<string> returnArrSensorType = new List<string>();
             for (int i = 0; i < NumberSensorsContains; i++)
             {
@@ -52,12 +78,12 @@ namespace InvestigationGame
         //    iranianAgents.Add(agent);
         //} 
 
-        public int GetNumberSersrorsContains()
+        public int GetNumberSensorsContains()
         {
             return NumberSensorsContains;
         }
 
-        public int GetNumberSersrorsAttached()
+        public int GetNumberSensorsAttached()
         {
             return NumberSensorsAttached;
         }
@@ -67,21 +93,25 @@ namespace InvestigationGame
             NumberSensorsAttached++;
         }
 
-        public bool IsEqual(string sensor)
+        public bool RemoveIfEqual(string sensor)
         {
             int index = 0;
-            if (sensor.Equals(SensorsType[index])) {
-                Console.WriteLine("The linkage was successful.");
-                index++;
-                return true;
+            try
+            {
+                if (sensor.Equals(RemainedIdentifiable[index]))
+                {
+                    Console.WriteLine("The linkage was successful.");
+                    RemainedIdentifiable.RemoveAt(0);
+                    Activate();
+                    index++;
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
             }
             return false;
         }
-
-        //public string GetSensorsTypeByIndex(int index)
-        //{
-        //    return SensorsType[index];
-        //}
 
         public override string ToString()
         {
