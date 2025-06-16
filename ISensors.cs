@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class Program
+    internal interface ISensors
     {
-        static void Main(string[] args)
-        {
-            Game game = new Game();
-            game.StartGame();
-        }
+        string[] SensorsType { get; set; }
+
+        void Activate();
     }
 }

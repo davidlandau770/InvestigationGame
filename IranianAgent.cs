@@ -6,17 +6,86 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class IranianAgent
+    internal class IranianAgent : IIranianAgents
     {
-        public string AgentType { get; private set; }
-        public int NumberSensors { get; private set; }
-        public Sensor[] SensorsType { get; private set; }
+        public string AgentType { get; set; }
+        public int NumberSensorsContains { get; set; }
+        public int NumberSensorsAttached {  get; set; }
+        public List<string> SensorsType { get; set; }
 
-        public IranianAgent(string agentType, int numberSensors, Sensor[] sensorsType)
+        public IranianAgent(string agentType)
         {
             AgentType = agentType;
-            NumberSensors = 2;
-            SensorsType = sensorsType;
+            NumberSensorsContains = CheckNumberSensorsContains();
+            SensorsType = GetRandomSensorType();
+        }
+
+        static List<IranianAgent> iranianAgents = new List<IranianAgent>();
+
+        public void Activate()
+        {
+
+        }
+
+        public int CheckNumberSensorsContains()
+        {
+            if (AgentType == "Squad Leader") return 4;
+            else if (AgentType == "Senior Commander") return 6;
+            else if (AgentType == "Organization Leader") return 8;
+            else return 2;
+        }
+
+        public List<string> GetRandomSensorType()
+        {
+            string[] arrSensorType = { "basic", "termi" };
+            Random random = new Random();
+            List<string> returnArrSensorType = new List<string>();
+            for (int i = 0; i < NumberSensorsContains; i++)
+            {
+                returnArrSensorType.Add(arrSensorType[random.Next(0, 2)]);
+            }
+            return returnArrSensorType;
+        }
+
+        //public void AddToList(IranianAgent agent)
+        //{
+        //    iranianAgents.Add(agent);
+        //} 
+
+        public int GetNumberSersrorsContains()
+        {
+            return NumberSensorsContains;
+        }
+
+        public int GetNumberSersrorsAttached()
+        {
+            return NumberSensorsAttached;
+        }
+
+        public void AttachingSensor()
+        {
+            NumberSensorsAttached++;
+        }
+
+        public bool IsEqual(string sensor)
+        {
+            int index = 0;
+            if (sensor.Equals(SensorsType[index])) {
+                Console.WriteLine("The linkage was successful.");
+                index++;
+                return true;
+            }
+            return false;
+        }
+
+        //public string GetSensorsTypeByIndex(int index)
+        //{
+        //    return SensorsType[index];
+        //}
+
+        public override string ToString()
+        {
+            return $"{string.Join(", ", SensorsType)}";
         }
     }
 }
