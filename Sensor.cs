@@ -6,22 +6,30 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class Sensor
+    internal class Sensor : ISensors
     {
-        public string[] SensorsType { get; private set; }
+        IranianAgent agent;
+        public string[] SensorsType { get; set; }
         
-        public Sensor()
+        public Sensor(string[] sensorsType)
         {
-            SensorsType = GetRandomSensorType();
+            SensorsType = sensorsType;
         }
 
-        public string[] GetRandomSensorType()
+        public void Activate()
         {
-            string[] arrSensorType = { "basic", "termi" };
-            Random random = new Random();
-            string[] returnArrSensorType = { arrSensorType[random.Next(0, 1)], arrSensorType[random.Next(0, 1)] };
-            return arrSensorType;
+            //    int i = 0;
+            //    while (i < agent.NumberSensors)
+            //    {
+            //        string sensorOfAgent = agent.GetSensorsTypeByIndex(i);
+            //        if (sensorOfAgent = )
+            //        i++;
+            //    }
         }
 
+        public override string ToString()
+        {
+            return $"{string.Join(",", SensorsType)}";
+        }
     }
 }
