@@ -51,6 +51,10 @@ namespace InvestigationGame
                         Counter = 0;
                     }
                 }
+                if (agent.NumberSensorsAttached < 0)
+                {
+                    agent.NumberSensorsAttached = 0;
+                }
             }
         }
     }
