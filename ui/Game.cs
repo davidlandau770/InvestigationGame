@@ -35,7 +35,7 @@ namespace InvestigationGame
         public Sensor checkInstance(string inputSensor)
         {
             Sensor sensor;
-            string[] typeOfSensors = { "audio", "thermal", "pulse", "motion", "Magnetic", "Signal", "Light" };
+            string[] typeOfSensors = Sensor.GetTypeOfSensors();
             if (dictForSaveInstances.ContainsKey(inputSensor))
             {
                 sensor = dictForSaveInstances[inputSensor];
@@ -72,7 +72,7 @@ namespace InvestigationGame
                     agent.RemoveSensorByValue(sensorType);
                     agent.AddNumberSensorsAttached();
                     sensor.Activate(agent);
-                    Console.WriteLine(string.Join(", ",agent.RemainedSensors));
+                    //Console.WriteLine(string.Join(", ",agent.RemainedSensors));
                 }
             }
             int newAttached = agent.GetNumberSensorsAttached();
