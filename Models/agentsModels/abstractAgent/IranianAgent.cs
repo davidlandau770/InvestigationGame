@@ -13,6 +13,7 @@ namespace InvestigationGame
         public int NumberSensorsContains { get; set; }
         public int NumberSensorsAttached { get; set; } = 0;
         public int CountAttached { get; set; } = 0;
+        public int Counter { get; set; }
         public List<string> SensorsType { get; set; }
         public List<string> RemainedSensors { get; set; }
 
@@ -28,13 +29,38 @@ namespace InvestigationGame
 
         protected List<string> GetRandomSensorType(int numberSensors)
         {
-            string[] arrSensorType = { "basic", "thermal" };
+            string[] arrSensorType = Sensor.GetTypeOfSensors();
             List<string> returnArrSensorType = new List<string>();
             for (int i = 0; i < numberSensors; i++)
             {
                 returnArrSensorType.Add(arrSensorType[random.Next(0, arrSensorType.Length)]);
             }
             return returnArrSensorType;
+        }
+        
+        public void RemoveSensorByValue(string value)
+        {
+            RemainedSensors.Remove(value);
+        }
+
+        public void AddNumberSensorsAttached()
+        {
+            NumberSensorsAttached++;
+        }
+
+        public int GetNumberSensorsContains()
+        {
+            return NumberSensorsContains;
+        }
+
+        public int GetNumberSensorsAttached()
+        {
+            return NumberSensorsAttached;
+        }
+
+        public override string ToString()
+        {
+            return $"AgentType: {AgentType}, NumberSensorsContains: {NumberSensorsContains}, NumberSensorsAttached: {NumberSensorsAttached}, CountAttached: {CountAttached}, SensorsType: ({string.Join(", ", SensorsType)})";
         }
     }
 }

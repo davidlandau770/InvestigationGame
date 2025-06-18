@@ -18,10 +18,7 @@ namespace InvestigationGame
 
         public override void Activate()
         {
-            Console.WriteLine(AgentType);
-            Console.WriteLine(NumberSensorsContains);
-            Console.WriteLine(NumberSensorsAttached);
-            Console.WriteLine(string.Join(",", SensorsType));
+
         }
     }
 }

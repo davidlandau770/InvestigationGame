@@ -16,13 +16,9 @@ namespace InvestigationGame
             CancelsAttack = false;
             HowManyFieldsRevealing = 1;
         }
-        public override void Activate()
+        public override void Activate(IranianAgent agent)
         {
-            Console.WriteLine(SensorType);
-            Console.WriteLine(RevealsSensors);
-            Console.WriteLine(Broken);
-            Console.WriteLine(CancelsAttack);
-            Console.WriteLine(HowManyFieldsRevealing);
+            Console.WriteLine($"Exposure: The agent's rank is: {agent.AgentType}");
         }
     }
 }
