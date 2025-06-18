@@ -19,11 +19,7 @@ namespace InvestigationGame
 
         public override void Activate(IranianAgent agent)
         {
-            Console.WriteLine(SensorType);
-            Console.WriteLine(RevealsSensors);
-            Console.WriteLine(Broken);
-            Console.WriteLine(CancelsAttack);
-            Console.WriteLine(HowManyFieldsRevealing);
+
         }
     }
 }
