@@ -16,7 +16,7 @@ namespace InvestigationGame
             CancelsAttack = false;
             HowManyFieldsRevealing = 2;
         }
-        public override void Activate()
+        public override void Activate(IranianAgent agent)
         {
             Console.WriteLine(SensorType);
             Console.WriteLine(RevealsSensors);

@@ -9,28 +9,51 @@ namespace InvestigationGame
 {
     internal class Game
     {
+        static Dictionary<string, Sensor> dictForSaveInstances = new Dictionary<string, Sensor>();
+
         public void StartGame()
         {
-            bool stop = true;
-            while (stop)
+            Console.WriteLine("Welcome to the investigation game!\nA game to detect Iranian agents using sensors.\nPlease enter the type of agent you would like to activate sensors on. (default is Foot soldier)");
+            IranianAgent agent = ServiceAgent.CreateTypeAgent(Console.ReadLine());
+            Console.WriteLine(agent);
+            while (true)
             {
-                Console.WriteLine("Welcome to the investigation game!\nA game to detect Iranian agents using sensors.\nPlease enter the type of agent you would like to activate sensors on. (default is Foot soldier)");
-                IranianAgent agent = ServiceAgent.CreateTypeAgent(Console.ReadLine());
-                agent.Activate();
-                while (true)
+                Console.WriteLine("Please enter the type of sensor you would like to activate. (default is audio)");
+                string inputSensor = Console.ReadLine();
+
+                Sensor sensor = checkInstance(inputSensor);
+                SensorVulnerabilityTesting(agent, sensor);
+
+                int finish = agent.GetNumberSensorsContains() - agent.GetNumberSensorsAttached();
+                if (finish <= 0)
                 {
-                    Console.WriteLine("Please enter the type of sensor you would like to activate. (default is audio)");
-                    Sensor sensor = ServiceSensor.CreateTypeSensor(Console.ReadLine());
-                    sensor.Activate();
-
-                    SensorVulnerabilityTesting(agent, sensor);
-
-                    int finish = agent.GetNumberSensorsContains() - agent.GetNumberSensorsAttached();
-                    if (finish <= 0)
-                    {
-                        Console.WriteLine("********************************\n");
-                        break;
-                    }
+                    Console.WriteLine("********************************\n");
+                    break;
+                }
+            }
+        }
+        public Sensor checkInstance(string inputSensor)
+        {
+            Sensor sensor;
+            string[] typeOfSensors = { "audio", "thermal", "pulse", "motion", "Magnetic", "Signal", "Light" };
+            if (dictForSaveInstances.ContainsKey(inputSensor))
+            {
+                sensor = dictForSaveInstances[inputSensor];
+                return sensor;
+            }
+            else
+            {
+                if (typeOfSensors.Contains(inputSensor))
+                {
+                    sensor = ServiceSensor.CreateTypeSensor(inputSensor);
+                    dictForSaveInstances[inputSensor] = sensor;
+                    return sensor;
+                }
+                else
+                {
+                    sensor = ServiceSensor.CreateTypeSensor("audio");
+                    dictForSaveInstances[inputSensor] = sensor;
+                    return sensor;
                 }
             }
         }
@@ -48,6 +71,8 @@ namespace InvestigationGame
                 {
                     agent.RemoveSensorByValue(sensorType);
                     agent.AddNumberSensorsAttached();
+                    sensor.Activate(agent);
+                    Console.WriteLine(string.Join(", ",agent.RemainedSensors));
                 }
             }
             int newAttached = agent.GetNumberSensorsAttached();

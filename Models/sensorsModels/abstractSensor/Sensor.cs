@@ -14,10 +14,11 @@ namespace InvestigationGame
         public bool Broken { get; set; }
         public bool CancelsAttack { get; set; }
         public int HowManyFieldsRevealing { get; set; }
+        public int Counter { get; set; }
 
         protected Random random = new Random();
 
-        public abstract void Activate();
+        public abstract void Activate(IranianAgent agent);
 
         public override string ToString()
         {
