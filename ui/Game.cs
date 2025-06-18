@@ -19,7 +19,7 @@ namespace InvestigationGame
             while (true)
             {
                 Console.WriteLine("Please enter the type of sensor you would like to activate. (default is audio)");
-                string inputSensor = Console.ReadLine();
+                string inputSensor = Console.ReadLine().ToLower();
 
                 Sensor sensor = checkInstance(inputSensor);
                 SensorVulnerabilityTesting(agent, sensor);
@@ -72,6 +72,8 @@ namespace InvestigationGame
                     agent.RemoveSensorByValue(sensorType);
                     agent.AddNumberSensorsAttached();
                     sensor.Activate(agent);
+                    agent.Activate();
+                    Console.WriteLine(string.Join(", ", agent.RemainedSensors));
                 }
             }
             int newAttached = agent.GetNumberSensorsAttached();
