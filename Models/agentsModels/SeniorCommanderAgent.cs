@@ -12,16 +12,21 @@ namespace InvestigationGame.newModels.agents
         {
             AgentType = agentType;
             NumberSensorsContains = 6;
+            Counter = 0;
             SensorsType = GetRandomSensorType(NumberSensorsContains);
             RemainedSensors = new List<string>(SensorsType);
         }
 
         public override void Activate()
         {
-            Console.WriteLine(AgentType);
-            Console.WriteLine(NumberSensorsContains);
-            Console.WriteLine(NumberSensorsAttached);
-            Console.WriteLine(string.Join(",", SensorsType));
+            Counter++;
+            if (Counter % 3 == 0)
+            {
+                int numberOfSensorAttachments = NumberSensorsContains - NumberSensorsAttached;
+                RemainedSensors.Insert(0, SensorsType[random.Next(0, numberOfSensorAttachments)]);
+                RemainedSensors.Insert(0, SensorsType[random.Next(0, numberOfSensorAttachments)]);
+                NumberSensorsAttached -= 2;
+            }
         }
     }
 }
