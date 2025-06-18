@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class OldSensor : Sensor
+    internal class OldSensor
     {
         //IranianAgent agent;
         public string[] SensorsType { get; set; }

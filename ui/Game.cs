@@ -21,7 +21,11 @@ namespace InvestigationGame
                 Console.WriteLine("Welcome to the investigation game!\nA game to detect Iranian agents using sensors.\nPlease enter the type of agent you would like to activate sensors on.");
                 IranianAgent agent = ServiceAgent.CreateTypeAgent(Console.ReadLine());
                 agent.Activate();
-                Console.ReadKey();
+
+                Console.WriteLine("sensor:");
+                Sensor sensor = ServiceSensor.CreateTypeSensor(Console.ReadLine());
+                sensor.Activate();
+
                 //string agentType = Console.ReadLine();
                 //agent = new IranianAgent(agentType);
                 //while (true)
