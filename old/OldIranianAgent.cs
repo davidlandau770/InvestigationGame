@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class IranianAgent : IIranianAgents
+    internal class OldIranianAgent
     {
         public string AgentType { get; set; }
         public int NumberSensorsContains { get; set; }
         public int NumberSensorsAttached {  get; set; }
+        public int CountAttached { get; set; } = 0;
         public List<string> SensorsType { get; set; }
         public List<string> RemainedIdentifiable { get; set; }
 
-        public IranianAgent(string agentType)
+        public OldIranianAgent(string agentType)
         {
             AgentType = agentType == "Squad Leader" ? "Squad Leader" : agentType == "Senior Commander" ? "Senior Commander" : agentType == "Organization Leader" ? "Organization Leader" : "Foot Soldier";
             NumberSensorsContains = CheckNumberSensorsContains();
@@ -27,26 +28,31 @@ namespace InvestigationGame
         
         public void Activate()
         {
-            int count = 0;
-            count++;
+            CountAttached++;
+            Console.WriteLine($"CountAttached: {CountAttached}");
+            Console.WriteLine($"RemainedIdentifiable: {string.Join(", ", RemainedIdentifiable)}");
             if (AgentType == "Squad Leader")
             {
-                if (count == 3)
+                if (CountAttached % 3 == 0)
                 {
+                    Console.WriteLine("########################################################################");
                     string[] arrSensorType = { "basic", "termi" };
-                    RemainedIdentifiable.Insert(0, arrSensorType[random.Next(0, 2)]);
-
+                    ReturnSensor();
+                    //CountAttached = 0;
                 }
             } else if (AgentType == "Senior Commander")
             {
                 
             } else if (AgentType == "Organization Leader")
             {
-                if (count == 3)
+                if (CountAttached % 3 == 0)
                 {
+                    Console.WriteLine("########################################################################");
                     string[] arrSensorType = { "basic", "termi" };
-                    RemainedIdentifiable.Insert(0, arrSensorType[random.Next(0, 2)]);
+                    ReturnSensor();
+                    //CountAttached = 0;
                 }
+                Console.WriteLine($"----RemainedIdentifiable: {RemainedIdentifiable.Count}");
             }
             else
             {
@@ -54,6 +60,18 @@ namespace InvestigationGame
             }
         }
 
+        public void ReturnSensor()
+        {
+            int indexToAdd = SensorsType.Count - RemainedIdentifiable.Count - 1;
+            if (indexToAdd >= 0)
+            {
+                RemainedIdentifiable.Insert(0, SensorsType[indexToAdd]);
+            }
+
+            Console.WriteLine(string.Join(", ", RemainedIdentifiable));
+
+        }
+        
         public int CheckNumberSensorsContains()
         {
             if (AgentType == "Squad Leader") return 4;
@@ -85,7 +103,7 @@ namespace InvestigationGame
 
         public int GetNumberSensorsAttached()
         {
-            return NumberSensorsAttached;
+            return NumberSensorsAttached = SensorsType.Count - RemainedIdentifiable.Count;
         }
 
         public void AttachingSensor()
@@ -93,9 +111,10 @@ namespace InvestigationGame
             NumberSensorsAttached++;
         }
 
-        public bool RemoveIfEqual(string sensor)
+        public bool RemoveIfEqual(string sensor, int index)
         {
-            int index = 0;
+            //int index = 0;
+            Console.WriteLine(index);
             try
             {
                 if (sensor.Equals(RemainedIdentifiable[index]))
@@ -103,7 +122,7 @@ namespace InvestigationGame
                     Console.WriteLine("The linkage was successful.");
                     RemainedIdentifiable.RemoveAt(0);
                     Activate();
-                    index++;
+                    //index++;
                     return true;
                 }
             }
@@ -115,7 +134,7 @@ namespace InvestigationGame
 
         public override string ToString()
         {
-            return $"{string.Join(", ", SensorsType)}";
+            return $"{string.Join(", ", RemainedIdentifiable)}";
         }
     }
 }
