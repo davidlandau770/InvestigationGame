@@ -28,13 +28,33 @@ namespace InvestigationGame
 
         protected List<string> GetRandomSensorType(int numberSensors)
         {
-            string[] arrSensorType = { "basic", "thermal" };
+            string[] arrSensorType = { "audio", "thermal" };
             List<string> returnArrSensorType = new List<string>();
             for (int i = 0; i < numberSensors; i++)
             {
                 returnArrSensorType.Add(arrSensorType[random.Next(0, arrSensorType.Length)]);
             }
             return returnArrSensorType;
+        }
+        
+        public void RemoveSensorByValue(string value)
+        {
+            RemainedSensors.Remove(value);
+        }
+
+        public void AddNumberSensorsAttached()
+        {
+            NumberSensorsAttached++;
+        }
+
+        public int GetNumberSensorsContains()
+        {
+            return NumberSensorsContains;
+        }
+
+        public int GetNumberSensorsAttached()
+        {
+            return NumberSensorsAttached;
         }
     }
 }
