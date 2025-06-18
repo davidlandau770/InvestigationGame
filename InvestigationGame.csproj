@@ -43,13 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IIranianAgents.cs" />
-    <Compile Include="IranianAgent.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="ISensors.cs" />
+    <Compile Include="Models\sensorsModels\LightSensor.cs" />
+    <Compile Include="Models\sensorsModels\MagneticSensor.cs" />
+    <Compile Include="Models\sensorsModels\MotionSensor.cs" />
+    <Compile Include="Models\sensorsModels\PulseSensor.cs" />
+    <Compile Include="service\ServiceSensor.cs" />
+    <Compile Include="service\ServiceAgent.cs" />
+    <Compile Include="Models\agentsModels\abstractAgent\IranianAgent.cs" />
+    <Compile Include="Models\agentsModels\FootSoldierAgent.cs" />
+    <Compile Include="Models\agentsModels\OrganizationLeaderAgent.cs" />
+    <Compile Include="Models\agentsModels\SeniorCommanderAgent.cs" />
+    <Compile Include="Models\agentsModels\SquadLeaderAgent.cs" />
+    <Compile Include="Models\sensorsModels\AudioSensor.cs" />
+    <Compile Include="old\OldIranianAgent.cs" />
+    <Compile Include="Models\sensorsModels\SignalSensor.cs" />
+    <Compile Include="Models\sensorsModels\ThermalSensor.cs" />
+    <Compile Include="ui\Game.cs" />
+    <Compile Include="Models\sensorsModels\abstractSensor\Sensor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sensor.cs" />
+    <Compile Include="old\OldSensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

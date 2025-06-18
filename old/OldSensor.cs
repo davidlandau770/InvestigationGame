@@ -6,25 +6,18 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class Sensor : ISensors
+    internal class OldSensor : Sensor
     {
         //IranianAgent agent;
         public string[] SensorsType { get; set; }
         
-        public Sensor(string[] sensorsType)
+        public OldSensor(string[] sensorsType)
         {
             SensorsType = sensorsType;
         }
 
         public void Activate()
         {
-            //    int i = 0;
-            //    while (i < agent.NumberSensors)
-            //    {
-            //        string sensorOfAgent = agent.GetSensorsTypeByIndex(i);
-            //        if (sensorOfAgent = )
-            //        i++;
-            //    }
         }
 
         public override string ToString()
