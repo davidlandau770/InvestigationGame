@@ -22,7 +22,7 @@ namespace InvestigationGame
 
         public static string[] GetTypeOfSensors()
         {
-            string[] typeOfSensors = { "audio", "thermal", "pulse", "motion", "Magnetic", "Signal", "Light" };
+            string[] typeOfSensors = { "audio", "thermal", "pulse", "motion", "magnetic", "signal", "light" };
             return typeOfSensors;
         }
 

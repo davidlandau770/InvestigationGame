@@ -72,7 +72,6 @@ namespace InvestigationGame
                     agent.RemoveSensorByValue(sensorType);
                     agent.AddNumberSensorsAttached();
                     sensor.Activate(agent);
-                    //Console.WriteLine(string.Join(", ",agent.RemainedSensors));
                 }
             }
             int newAttached = agent.GetNumberSensorsAttached();

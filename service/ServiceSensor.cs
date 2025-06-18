@@ -23,15 +23,15 @@ namespace InvestigationGame
             {
                 return new MotionSensor(sensorType);
             }
-            else if (sensorType == "Magnetic")
+            else if (sensorType == "magnetic")
             {
                 return new MagneticSensor(sensorType);
             }
-            else if (sensorType == "Signal")
+            else if (sensorType == "signal")
             {
                 return new SignalSensor(sensorType);
             }
-            else if (sensorType == "Light")
+            else if (sensorType == "light")
             {
                 return new LightSensor(sensorType);
             }
