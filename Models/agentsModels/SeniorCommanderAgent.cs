@@ -26,6 +26,10 @@ namespace InvestigationGame.newModels.agents
                 RemainedSensors.Insert(0, SensorsType[random.Next(0, numberOfSensorAttachments)]);
                 RemainedSensors.Insert(0, SensorsType[random.Next(0, numberOfSensorAttachments)]);
                 NumberSensorsAttached -= 2;
+                if (NumberSensorsAttached < 0)
+                {
+                    NumberSensorsAttached = 0;
+                }
             }
         }
     }
