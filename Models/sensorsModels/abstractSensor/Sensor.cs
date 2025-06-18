@@ -20,6 +20,12 @@ namespace InvestigationGame
 
         public abstract void Activate(IranianAgent agent);
 
+        public static string[] GetTypeOfSensors()
+        {
+            string[] typeOfSensors = { "audio", "thermal", "pulse", "motion", "Magnetic", "Signal", "Light" };
+            return typeOfSensors;
+        }
+
         public override string ToString()
         {
             return $"{string.Join(", ", SensorType)}";

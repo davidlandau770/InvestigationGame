@@ -28,7 +28,7 @@ namespace InvestigationGame
 
         protected List<string> GetRandomSensorType(int numberSensors)
         {
-            string[] arrSensorType = { "audio", "thermal", "pulse" };
+            string[] arrSensorType = Sensor.GetTypeOfSensors();
             List<string> returnArrSensorType = new List<string>();
             for (int i = 0; i < numberSensors; i++)
             {
@@ -59,7 +59,7 @@ namespace InvestigationGame
 
         public override string ToString()
         {
-            return $"AgentType: {AgentType}, NumberSensorsContains: {NumberSensorsContains}, NumberSensorsAttached: {NumberSensorsAttached}, CountAttached: {CountAttached}, SensorsType: {string.Join(", ", SensorsType)}";
+            return $"AgentType: {AgentType}, NumberSensorsContains: {NumberSensorsContains}, NumberSensorsAttached: {NumberSensorsAttached}, CountAttached: {CountAttached}, SensorsType: ({string.Join(", ", SensorsType)})";
         }
     }
 }
