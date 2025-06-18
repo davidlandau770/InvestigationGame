@@ -18,11 +18,7 @@ namespace InvestigationGame
         }
         public override void Activate(IranianAgent agent)
         {
-            Console.WriteLine(SensorType);
-            Console.WriteLine(RevealsSensors);
-            Console.WriteLine(Broken);
-            Console.WriteLine(CancelsAttack);
-            Console.WriteLine(HowManyFieldsRevealing);
+            Console.WriteLine($"Exposure: The agent's rank is: {agent.AgentType}\nExposure: The sensors you have left to attach to the agent: {string.Join(", ",agent.RemainedSensors)}");
         }
     }
 }
