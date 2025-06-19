@@ -27,7 +27,7 @@ namespace InvestigationGame
                 int finish = agent.GetNumberSensorsContains() - agent.GetNumberSensorsAttached();
                 if (finish <= 0)
                 {
-                    Console.WriteLine("********************************\n");
+                    Console.WriteLine("***************** go to other agent ***************\n");
                     break;
                 }
             }
