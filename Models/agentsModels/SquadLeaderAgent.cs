@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame.newModels.agents
 {
-    internal class SquadLeaderAgent : IranianAgent
+    internal class SquadLeaderAgent : IranianAgent, ICounter
     {
+        public int Counter { get; set; }
+
         public SquadLeaderAgent(string agentType) : base(agentType)
         {
             AgentType = agentType;

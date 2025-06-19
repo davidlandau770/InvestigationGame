@@ -8,6 +8,8 @@ namespace InvestigationGame.newModels.agents
 {
     internal class SeniorCommanderAgent : IranianAgent
     {
+        public int Counter { get; set; }
+
         public SeniorCommanderAgent(string agentType) : base(agentType)
         {
             AgentType = agentType;

@@ -15,6 +15,7 @@ namespace InvestigationGame
             SensorType = sensorType;
             HowManyFieldsRevealing = 1;
         }
+
         public override void Activate(IranianAgent agent)
         {
             Console.WriteLine($"Exposure: The agent's rank is: {agent.AgentType}");

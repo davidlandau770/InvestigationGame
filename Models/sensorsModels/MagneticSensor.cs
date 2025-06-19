@@ -15,6 +15,7 @@ namespace InvestigationGame
 
         public override void Activate(IranianAgent agent)
         {
+            // אני צריך להשלים
         }
     }
 }
