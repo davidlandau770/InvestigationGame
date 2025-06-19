@@ -11,9 +11,9 @@ namespace InvestigationGame
         public LightSensor(string sensorType)
         {
             SensorType = sensorType;
-            RevealsSensors = false;
-            Broken = false;
-            CancelsAttack = false;
+            //RevealsSensors = false;
+            //Broken = false;
+            //CancelsAttack = false;
             HowManyFieldsRevealing = 2;
         }
         public override void Activate(IranianAgent agent)

@@ -11,9 +11,9 @@ namespace InvestigationGame
         public MagneticSensor(string sensorType)
         {
             SensorType = sensorType;
-            RevealsSensors = false;
-            Broken = false;
-            CancelsAttack = true;
+            //RevealsSensors = false;
+            //Broken = false;
+            //CancelsAttack = true;
             HowManyFieldsRevealing = 0;
         }
 

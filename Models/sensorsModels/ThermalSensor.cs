@@ -11,9 +11,9 @@ namespace InvestigationGame
         public ThermalSensor(string sensorType)
         {
             SensorType = sensorType;
-            RevealsSensors = true;
-            Broken = false;
-            CancelsAttack = false;
+            //RevealsSensors = true;
+            //Broken = false;
+            //CancelsAttack = false;
             HowManyFieldsRevealing = 0;
         }
         public override void Activate(IranianAgent agent)

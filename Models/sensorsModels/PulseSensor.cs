@@ -13,9 +13,9 @@ namespace InvestigationGame
         public PulseSensor(string sensorType)
         {
             SensorType = sensorType;
-            RevealsSensors = false;
-            Broken = true;
-            CancelsAttack = false;
+            //RevealsSensors = false;
+            //Broken = true;
+            //CancelsAttack = false;
             HowManyFieldsRevealing = 0;
             Counter = 0;
         }
