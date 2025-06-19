@@ -11,9 +11,9 @@ namespace InvestigationGame
         public AudioSensor(string sensorType)
         {
             SensorType = sensorType;
-            RevealsSensors = false;
-            Broken = false;
-            CancelsAttack = false;
+            //RevealsSensors = false;
+            //Broken = false;
+            //CancelsAttack = false;
             HowManyFieldsRevealing = 0;
         }
         public override void Activate(IranianAgent agent)
