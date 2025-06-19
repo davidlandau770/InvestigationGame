@@ -11,14 +11,13 @@ namespace InvestigationGame
         public ThermalSensor(string sensorType)
         {
             SensorType = sensorType;
-            //RevealsSensors = true;
-            //Broken = false;
-            //CancelsAttack = false;
-            HowManyFieldsRevealing = 0;
         }
         public override void Activate(IranianAgent agent)
         {
-            Console.WriteLine($"Exposure: The next sensor is: {agent.RemainedSensors[0]}");
+            if (agent.RemainedSensors.Count > 0)
+            {
+                Console.WriteLine($"Exposure: The next sensor is: {agent.RemainedSensors[0]}");
+            }
         }
     }
 }

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class SignalSensor : Sensor
+    internal class SignalSensor : Sensor, IRevealingFields
     {
+        public int HowManyFieldsRevealing { get; set; }
+
         public SignalSensor(string sensorType)
         {
             SensorType = sensorType;
-            //RevealsSensors = false;
-            //Broken = false;
-            //CancelsAttack = false;
             HowManyFieldsRevealing = 1;
         }
         public override void Activate(IranianAgent agent)
