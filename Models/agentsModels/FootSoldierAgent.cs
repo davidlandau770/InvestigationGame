@@ -18,7 +18,7 @@ namespace InvestigationGame
 
         public override void Activate()
         {
-
         }
+
     }
 }

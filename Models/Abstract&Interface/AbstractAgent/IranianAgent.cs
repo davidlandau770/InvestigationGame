@@ -13,7 +13,6 @@ namespace InvestigationGame
         public int NumberSensorsContains { get; set; }
         public int NumberSensorsAttached { get; set; } = 0;
         public int CountAttached { get; set; } = 0;
-        public int Counter { get; set; }
         public List<string> SensorsType { get; set; }
         public List<string> RemainedSensors { get; set; }
 

@@ -43,15 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\SensorsModels\Abstract&amp;InterpaceSensor\ICounter.cs" />
-    <Compile Include="Models\SensorsModels\Abstract&amp;InterpaceSensor\IRevealingFields.cs" />
+    <Compile Include="Models\Abstract&amp;Interface\ICounter.cs" />
+    <Compile Include="Models\Abstract&amp;Interface\Abstract&amp;InterfaceSensor\IRevealingFields.cs" />
     <Compile Include="Models\SensorsModels\LightSensor.cs" />
     <Compile Include="Models\SensorsModels\MagneticSensor.cs" />
     <Compile Include="Models\SensorsModels\MotionSensor.cs" />
     <Compile Include="Models\SensorsModels\PulseSensor.cs" />
     <Compile Include="Service\ServiceSensor.cs" />
     <Compile Include="Service\ServiceAgent.cs" />
-    <Compile Include="Models\AgentsModels\AbstractAgent\IranianAgent.cs" />
+    <Compile Include="Models\Abstract&amp;Interface\AbstractAgent\IranianAgent.cs" />
     <Compile Include="Models\AgentsModels\FootSoldierAgent.cs" />
     <Compile Include="Models\AgentsModels\OrganizationLeaderAgent.cs" />
     <Compile Include="Models\AgentsModels\SeniorCommanderAgent.cs" />
@@ -61,7 +61,7 @@
     <Compile Include="Models\SensorsModels\SignalSensor.cs" />
     <Compile Include="Models\SensorsModels\ThermalSensor.cs" />
     <Compile Include="Ui\Game.cs" />
-    <Compile Include="Models\SensorsModels\Abstract&amp;InterpaceSensor\Sensor.cs" />
+    <Compile Include="Models\Abstract&amp;Interface\Abstract&amp;InterfaceSensor\Sensor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="old\OldSensor.cs" />
