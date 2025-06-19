@@ -32,7 +32,9 @@ namespace InvestigationGame.newModels.agents
             }
             if (Counter % 10 == 0)
             {
+                Console.WriteLine("In the \"Organization Leader\" agent, after 10 attempts, all sensors are returned.");
                 RemainedSensors = new List<string>(SensorsType);
+                NumberSensorsAttached = 0;
             }
         }
     }

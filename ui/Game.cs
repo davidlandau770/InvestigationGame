@@ -69,6 +69,7 @@ namespace InvestigationGame
             {
                 if (agentList.Contains(sensorType))
                 {
+                    Console.WriteLine("Boom! You managed to attach a sensor to the agent.");
                     agent.RemoveSensorByValue(sensorType);
                     agent.AddNumberSensorsAttached();
                     sensor.Activate(agent);

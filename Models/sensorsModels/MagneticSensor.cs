@@ -11,15 +11,10 @@ namespace InvestigationGame
         public MagneticSensor(string sensorType)
         {
             SensorType = sensorType;
-            //RevealsSensors = false;
-            //Broken = false;
-            //CancelsAttack = true;
-            HowManyFieldsRevealing = 0;
         }
 
         public override void Activate(IranianAgent agent)
         {
-
         }
     }
 }

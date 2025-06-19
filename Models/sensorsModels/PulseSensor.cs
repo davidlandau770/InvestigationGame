@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace InvestigationGame
 {
-    internal class PulseSensor : Sensor
+    internal class PulseSensor : Sensor, ICounter
     {
+        public int Counter { get; set; }
+
         public PulseSensor(string sensorType)
         {
             SensorType = sensorType;
-            //RevealsSensors = false;
-            //Broken = true;
-            //CancelsAttack = false;
-            HowManyFieldsRevealing = 0;
             Counter = 0;
         }
 
